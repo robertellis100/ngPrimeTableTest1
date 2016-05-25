@@ -11,14 +11,17 @@ import {Http, HTTP_PROVIDERS} from '@angular/http';
     selector: 'my-app',
     template: `
     <h1>My First Test App using PrimeNG DataTable from Angular 2 QuickStart</h1>
-    <input type="text" pInputText/>
+    <input type="number" pInputText/>
     <button (click)='getComplaints()'>Launch</button>
-    <p-dataTable [value]="complaints">
-    <p-column field="dataTypeName" header="Product"></p-column>
-    <p-column field="description" header="Issue"></p-column>
-    <p-column field="fieldName" header="Company"></p-column>
-    <p-column field="name" header="Zipcode"></p-column>
-    </p-dataTable>
+    <div *ngIf="complaints">
+        <p-dataTable [value]="complaints" [rows]="10" [paginator]="true" [rowsPerPageOptions]="[10,50,100]">
+            <header>List of Complaints</header>
+            <p-column field="name" header="Product" [filter]="true" filterMatchMode="contains"></p-column>
+            <p-column field="id" header="Issue" [filter]="true" filterMatchMode="contains"></p-column>
+            <p-column field="fieldName" header="Company" [filter]="true" filterMatchMode="contains"></p-column>
+            <p-column field="dataTypeName" header="Zipcode" [filter]="true" filterMatchMode="contains"></p-column>
+        </p-dataTable>
+    </div>    
     `,
     directives: [InputText,DataTable,Column],
     providers: [ComplaintService, HTTP_PROVIDERS]
@@ -26,11 +29,13 @@ import {Http, HTTP_PROVIDERS} from '@angular/http';
 export class AppComponent {  
 
     complaints: ConsumerComplaint[];
-
+    
     constructor(private complaintService: ComplaintService) { }
     
     getComplaints() {
         this.complaintService.getComplaints().subscribe(complaints => this.complaints = complaints);
     }
+    
+    
     
 }
