@@ -11,7 +11,7 @@ import {Http, HTTP_PROVIDERS} from '@angular/http';
     selector: 'my-app',
     template: `
     <h1>My First Test App using PrimeNG DataTable from Angular 2 QuickStart</h1>
-    <input type="number" pInputText/>
+    <!--<input type="number" pInputText/>-->
     <button (click)='getComplaints()'>Launch</button>
     <div *ngIf="complaints">
         <p-dataTable [value]="complaints" [rows]="10" [paginator]="true" [rowsPerPageOptions]="[10,50,100]" sortMode="multiple" [responsive]="true">
