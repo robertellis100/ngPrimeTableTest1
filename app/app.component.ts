@@ -14,12 +14,12 @@ import {Http, HTTP_PROVIDERS} from '@angular/http';
     <input type="number" pInputText/>
     <button (click)='getComplaints()'>Launch</button>
     <div *ngIf="complaints">
-        <p-dataTable [value]="complaints" [rows]="10" [paginator]="true" [rowsPerPageOptions]="[10,50,100]" sortMode="multiple">
+        <p-dataTable [value]="complaints" [rows]="10" [paginator]="true" [rowsPerPageOptions]="[10,50,100]" sortMode="multiple" [responsive]="true">
             <header>List of Complaints</header>
-            <p-column field="name" header="Product" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
-            <p-column field="id" header="Issue" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
-            <p-column field="fieldName" header="Company" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
-            <p-column field="dataTypeName" header="Zipcode" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+            <p-column field="id" header="Field ID" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+            <p-column field="name" header="Field Name" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+            <p-column field="width" header="Width" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
+            <p-column field="dataTypeName" header="Data Type" [filter]="true" filterMatchMode="contains" [sortable]="true"></p-column>
         </p-dataTable>
     </div>    
     `,
